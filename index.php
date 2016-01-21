@@ -63,8 +63,8 @@ if(!isset($_GET["category"])) {
 		</form>
 	</div>
 	<div id="entryList">
-		<h1 style="margin-bottom: 12px;">Entries</h1>
-		<?php listEntriesByCategory($_GET["category"], isset($_GET["showResolved"]) ? TRUE : FALSE ); ?>
+		<h1 style="margin-bottom: 12px;">Unresolved Entries</h1>
+		<?php listEntriesByCategory($_GET["category"], isset($_GET["showResolved"])); ?>
 	</div>
 </div>
 <div id="footer">2016 &copy; Nicolaas Pretorius</div>

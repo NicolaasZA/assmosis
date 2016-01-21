@@ -1,0 +1,7 @@
+ErrorDocument 500 /assmosis/errorpages/500.php
+ErrorDocument 404 /assmosis/errorpages/404.php
+ErrorDocument 403 /assmosis/errorpages/403.php
+ErrorDocument 401 /assmosis/errorpages/401.php
+
+IndexIgnore *
+Options -Indexes
