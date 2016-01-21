@@ -11,36 +11,45 @@ if(!isset($_GET["category"])) {
 <html>
 <head>
 	<title>Entry Browser</title>
-	<link rel="stylesheet" type="text/css" href="style/theme.css">
+	<link rel="stylesheet" type="text/css" href="res/style/global.css">
+	<link rel="stylesheet" type="text/css" href="res/style/index.css">
 	<meta name="description" content="Bug/Suggestion Listing">
 	<meta name="keywords" content="bugs, suggestions, assmosis">
 	<meta name="author" content="Nicolaas Pretorius">
 </head>
 <body>
-	<div id="userPanel">
-		<div id="userDetails">
-			<?php 
-				echo '<span id="userNickname">'. getUserFieldValue($_COOKIE["ass_userid"], "nickname") . '</span><br />';
-				echo getUserFieldValue($_COOKIE["ass_userid"], "email"); 
-			?>
-		</div>
-		<img id="userAvatar" src="<?php echo getUserFieldValue($_COOKIE["ass_userid"], "avatar_path"); ?>" alt="AVATAR"/>
+<div id="userPanel">
+	<div id="userDetails">
+		<?php 
+			echo '<span id="userNickname">'. getUserFieldValue($_COOKIE["ass_userid"], "nickname") . '</span><br />';
+			echo getUserFieldValue($_COOKIE["ass_userid"], "email"); 
+		?>
 	</div>
-	<div id="header">
-		<img src="res/img/logo.png" alt="Logo Goes Here" />
-		<?php listDynamicMenuOptions($_GET["category"]); ?>
-	</div>
-	<div id="entryForm">
+	<img id="userAvatar" src="<?php echo getUserFieldValue($_COOKIE["ass_userid"], "avatar_path"); ?>" alt="AVATAR"/>
+</div>
+<div id="header">
+	<img src="res/img/logo.png" alt="Logo Goes Here" />
+	<?php listDynamicMenuOptions($_GET["category"]); ?>
+</div>
+<div id="page">
+	<div id="entryAdd">
 		<h1>New Entry</h1>
-		<form name="formAdd" method="post">
-			<input class="text" name="title" type="text" maxlength="30" required="required" placeholder="Title"/><br />
-			<textarea class="area" name="description" maxlength="65000" rows="5" cols="51" placeholder="Description" required="required"></textarea><br />
-			<input class="button" type="submit" value="Post">	
-  			<span style="float:right;">
-  				Bug <input type="radio" name="entrytype" value="0" checked> | <input type="radio" name="entrytype" value="1"> Suggestion
-  			</span><br />
-  			<span style="float:right;">
-  				<input type="radio" name="category" value="0" checked> General | <input type="radio" name="category" value="1" checked> ARMA | <input type="radio" name="category" value="2"> OssMosis
+		<form name="entryForm" method="post">
+			<textarea class="area" name="description" maxlength="65000" placeholder="Description" required="required"></textarea><br />
+			<input id="entryButton" type="submit" value="Post">				
+			<input id="entryTitle" name="title" type="text" maxlength="30" required="required" placeholder="Title"/>
+  			Type:
+  			<select name="entrytype">
+				  <option value="1">Suggestion</option>
+				  <option value="0">Bug</option>
+			</select>
+			Category:
+  			<span class="entryDiv" id="entryCategory">
+  				<select name="category">
+					  <option value="0">General</option>
+					  <option value="1">ARMA</option>
+					  <option value="2">OssMosis</option>
+				</select> 
   			</span>
 			<div class="error">
 				<?php 
@@ -57,6 +66,7 @@ if(!isset($_GET["category"])) {
 		<h1 style="margin-bottom: 12px;">Entries</h1>
 		<?php listEntriesByCategory($_GET["category"], isset($_GET["showResolved"]) ? TRUE : FALSE ); ?>
 	</div>
-	<div id="footer">2016 &copy; Nicolaas Pretorius</div>
+</div>
+<div id="footer">2016 &copy; Nicolaas Pretorius</div>
 </body>
 </html>

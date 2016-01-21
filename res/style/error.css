@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 body {
-	background-image: url('../res/img/dark.png');
+	background-image: url('../img/dark.png');
 	background-color: #0D0600;
 	color: #F04924;
 	font-family: BuriedKNine, "Segou UI", Arial;
@@ -18,15 +18,6 @@ p {
 	width: 500px;
 	font-family: PoetsenOne, "Segou UI", Arial;
 	margin: 50px auto 100px auto;
-}
-
-@font-face {
-	font-family: BuriedKNine;
-	src: url('../res/font/BuriedK9.ttf');
-}
-@font-face {
-	font-family: PoetsenOne;
-	src: url('../res/font/PoetsenOne.ttf');
 }
 a {
 	color: inherit;

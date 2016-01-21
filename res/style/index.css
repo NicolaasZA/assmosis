@@ -1,0 +1,143 @@
+@CHARSET "ISO-8859-1";
+
+#page {
+	margin: -50px auto 0px auto;
+	width: 1000px;
+}
+
+/* 
+=====================================
+========== Entry Form 
+=====================================
+*/
+#entryAdd {
+	margin: 0px 0px 0px 0px;
+	color: #F04924;
+}
+
+#entryTitle, #entryAdd .area {
+	background-image: url('../img/grey.png');
+	background-color: #252525;
+	color: #b8b8ab;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 1px solid #F04924;
+	font-family: inherit;
+	font-size: 16px;
+	margin: 5px 0px 5px 2px;
+	padding-left: 7px;
+}
+#entryTitle {
+	width: 380px;
+	padding-bottom: 2px;
+}
+#entryAdd .area {
+	min-width: 1000px;
+	max-width: 1000px;		
+	width: 1000px;
+	min-height: 50px;
+	max-height: 400px;
+	height: 50px;
+}
+
+#entryButton {
+	background-image: url('../img/grey.png');
+	background-color: #b8b8ab;
+	color: #252525;
+	border-left: 0px;
+	border-right: 0px;
+	border-top: 0px;
+	border-bottom: 1px inset #F04924;
+	font-family: PoetsenOne;
+	font-size: inherit;
+	margin-left: 4px;
+	width: 80px;
+	height: 26px;
+}
+
+#entryButton {
+	border-bottom: 1px outset #F04924;
+}
+
+#entryAdd select {	
+	background-image: url('../img/grey.png');
+	background-color: #252525;
+	color: #b8b8ab;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 1px solid #F04924;
+	font-size: inherit;
+	font-family: inherit;
+	color: #b8b8ab;
+	height: 22px;
+	text-align: right;
+	width: 200px;
+}
+
+#entryType {
+	text-align:right;
+	width: 70px;
+}
+#entryCategory {
+	width: 300px;
+}
+
+/* 
+=====================================
+========== Entry Listing 
+=====================================
+*/
+#entryList {
+	color: #b8b8ab;
+	text-align: center;
+	margin: 10px 0px 0px 0px;
+	width: 1000px;
+}
+
+div.entrySuggestion, div.entryBug {
+	background-image: url('../img/grey.png');
+	background-color: #252525;
+	border-top: 2px solid #F04924;
+	color: #b8b8ab;
+	text-align: left !important;
+	margin-bottom: 5px;
+	padding: 6px 10px 3px 10px;
+}
+
+div.entryBug {
+	background-color: #353535;
+}
+
+#entryList .error {
+	margin-top: 5px;
+}
+
+#entryList .postDetails {
+	float: right;
+	text-align: right;
+	font-size: 14px;
+}
+
+#entryList .postType {
+	vertical-align: middle;
+	color: #595959;
+	font-size: 14px;
+	font-style: italic;
+	float: right;
+}
+
+#entryList .postTitle {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#entryList a {
+	text-decoration: none;
+	font-family: Consolas, PoetsenOne, Arial;
+	color: #F04924;
+	font-size: 15px;
+	font-weight: 100;
+}
+

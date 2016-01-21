@@ -8,7 +8,8 @@ include_once 'src/dynamicmenu.php';
 <html>
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="style/theme.css">
+	<link rel="stylesheet" type="text/css" href="res/style/global.css">
+	<link rel="stylesheet" type="text/css" href="res/style/login.css">
 	<meta name="description" content="Login at Assmosis">
 	<meta name="keywords" content="assmosis, login, bugs, suggestions">
 	<meta name="author" content="Nicolaas Pretorius">

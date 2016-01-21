@@ -1,0 +1,119 @@
+@CHARSET "ISO-8859-1";
+
+/*
+	GENERAl
+*/
+body {
+	background-image: url('../img/body2.png');
+	background-color: #0f0100; /*0D0600*/
+	color: #2A2C31;
+	font-family: PoetsenOne, "Segou UI", Arial;
+	font-size: 16px;
+}
+
+h2 {
+	background-color: rgba(0, 0, 0, 0.1);
+	color: #1A0500;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 10px 0px 10px 0px;
+	margin: 0px 0px 7px 0px;
+	width: 100%;
+}
+
+h1 {
+	color: #F04924;
+	font-family: PoetsenOne;
+	font-size: 45px;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 7px;
+}
+
+input.button {
+	font-size: inherit;
+	font-family: PoetsenOne;
+}
+
+/* 
+=====================================
+========== Header
+=====================================
+*/
+#header {
+	position: fixed;
+	color: silver;
+	top: 10px;
+	left: 10px;
+}
+
+#header img {
+	vertical-align: middle;
+	margin-right: 20px;
+}
+
+#header a {
+	color: #F04924;
+	text-decoration: none;
+}
+
+#header a:hover {
+	font-weight: 800;
+}
+
+/* 
+=====================================
+========== User Panel
+=====================================
+*/
+#userPanel #userAvatar {
+	border: 2px solid #F04924;
+	border-radius: 24px;
+	width: 48px;
+	height: 48px;
+	vertical-align: middle;
+	position: fixed;
+	top: 5px;
+	right: 5px;
+	box-shadow: 0px 0px 5px red;
+}
+
+#userPanel #userDetails {
+	color: #b8b8ab;
+	position: relative;
+	top: 0px;
+	right: 52px;
+	text-align: right;
+	z-index: -1;
+}
+
+#userDetails #userNickname {
+	font-size: 24px;
+}
+
+/* 
+=====================================
+========== Footer
+=====================================
+*/
+#footer {
+	color: #F04924;
+	font-weight: 100;
+	font-size: 14px;
+	position: fixed;
+	bottom: 2px;
+	right: 5px;
+}
+
+/*
+	CUSTOM FONTS
+*/
+@font-face {
+	font-family: BuriedKNine;
+	src: url('../font/BuriedK9.ttf');
+}
+
+@font-face {
+	font-family: PoetsenOne;
+	src: url('../font/PoetsenOne.ttf');
+}
