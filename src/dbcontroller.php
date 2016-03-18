@@ -7,7 +7,7 @@
  * @param string $database
  * @return mysqli
  */
-function connectToDatabase($hostname = "127.0.0.1", $username = "assmosis", $password = "", $database = "db_assmosis") {
+function connectToDatabase($hostname = "localhost", $username = "malarvsk_assmos", $password = "XTLcdxPsHM1ecIFBTZ", $database = "malarvsk_assmosis") {
 	// Create connection
 	$conn = new mysqli ( $hostname, $username, $password, $database );
 	
@@ -68,6 +68,37 @@ function addEntry($title, $description, $type, $category, $posterUID) {
 }
 
 /**
+ * Get category name from the uid.
+ *
+ * @param integer $category_uid
+ * @return string The category uid in case of no results, or the category name.
+ */
+function getCategoryNameFromUID($category_uid){
+	$result = querySelect ( "SELECT name FROM categories WHERE uid='$category_uid'" );
+	return ($result->num_rows > 0) ? $result->fetch_array () [0] : $category_uid;	
+}
+
+/**
+ * Get a array of category names.
+ *
+ * @return array() of category names      	
+ */
+function getCategoriesByName() {
+	// Create empty array
+	$categories = array();
+
+	// Query database
+	$result = querySelect ( "SELECT name FROM categories ORDER BY uid ASC" );
+
+	// Fill array with data
+	while($row = $result->fetch_array()) {
+		$categories[] = $row[0]; // First column in resultset.
+	}
+
+	return $categories;
+}
+
+/**
  * Get a field value from a specific entry record.
  *
  * @param string $entryUID        	
@@ -100,6 +131,37 @@ function getUserFieldValue($uid, $fieldName) {
 function getUserUIDFromEmail($email) {
 	$result = querySelect ( "SELECT uid FROM users WHERE email='$email'" );
 	return ($result->num_rows > 0) ? $result->fetch_assoc () ["uid"] : "";
+}
+
+/**
+ * Get the entry typename from the type uid.
+ * 
+ * @param integer $type_uid
+ * @return Entry typename, or the uid in case of no results.
+ */
+function getTypeNameFromUID($type_uid){	
+	$result = querySelect ( "SELECT name FROM types WHERE uid='$type_uid'" );
+	return ($result->num_rows > 0) ? $result->fetch_array () [0] : $type_uid;
+}
+
+/**
+ * Get a array of category names.
+ *
+ * @return array() of category names      	
+ */
+function getTypesByName() {
+	// Create empty array
+	$types = array();
+
+	// Query database
+	$result = querySelect ( "SELECT name FROM types ORDER BY uid ASC" );
+
+	// Fill array with data
+	while($row = $result->fetch_array()) {
+		$types[] = $row[0]; // First column in resultset.
+	}
+
+	return $types;
 }
 
 /**
@@ -158,7 +220,7 @@ function listEntriesInResultSet($result) {
 			// Retrieve the values that will be used.
 			$rDescription = (strlen ( $row ["description"] ) > 300) ? substr ( $row ["description"], 0, 300 ) : $row ["description"]; // Trim shown description to 300 max.
 			$rMarkResolved = ($row ["is_resolved"] == 0) ? "Resolved" : "Unresolved";
-			$rType = ($row ["type"] == 0) ? "Bug" : "Suggestion";
+			$rType = getTypeNameFromUID($row ["type"]);
 			$rCreationDate = $row ["creation_date"];
 			$rPostedUID = $row ["poster_uid"];
 			$rTitle = $row ["title"];
@@ -166,18 +228,21 @@ function listEntriesInResultSet($result) {
 			
 			// Open div.
 			echo '<div class="entry' . $rType . '">';
+
 			// Title
 			echo '<span class="postTitle">' . $rTitle . '</span>';
 			// Post Date | Type
 			echo '<span class="postDetails">Posted ' . $rCreationDate . '<br />by ' . getUserFieldValue ( $rPostedUID, "nickname" ) . '</span><br />';
 			// Parsed Description
 			echo '<span class="postDesc">' . $rDescription . '</span><br />';
+
 			// Links
 			echo '<span class="postLinks">';
 			// echo '<a href="view.php?post=' . $rPostID . '">[View]</a> | ';
 			echo '<a href="src/actions/resolve.php?post=' . $rPostID . '">[Mark as ' . $rMarkResolved . ']</a>';
-			echo '<span class="postType">~' . $rType . '</span>';
+			echo '<span class="postType" id="entry'.$rType.'">~' . $rType . '</span>';
 			echo '</span>';
+
 			// Close div.
 			echo '</div>';
 		}

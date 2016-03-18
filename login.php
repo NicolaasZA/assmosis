@@ -1,9 +1,10 @@
 <?php
 include_once 'src/dbcontroller.php';
+include_once 'src/iofunctions.php';
+
 if(isset($_COOKIE["ass_userid"])){
 	header("Location: index.php");
 }
-include_once 'src/dynamicmenu.php';
 ?>
 <html>
 <head>
@@ -26,22 +27,27 @@ include_once 'src/dynamicmenu.php';
 			<h2>Log In</h2> 
 			<div class="error">
 				<?php				
-				// On form submit
-				if (isset ( $_POST ) && ! empty ( $_POST )) {			
+				// ---------------------------------------------------------------------------------------------------------------------------------
+				// UPON LOGIN ATTEMPT (FORM SUBMISSION)
+				if (isset ( $_POST ) && ! empty ( $_POST )) {	
+					// Read email adress into variable.
 					$tempEmail = $_POST ["umail"];
-					// Verify
+
+					// Cross-check email adress with given password.
 					if (isValidUserCredentails ( $tempEmail, $_POST ["passwd"] )) {
 						// Create cookie
-						setcookie ( "ass_userid", getUserUIDFromEmail($tempEmail), time () + (3600 * 2), "/" ); // 1 day
+						setcookie( "ass_userid", getUserUIDFromEmail($tempEmail), time()+(3600 * 2), '/'); // 1 day
+
 						// Redirect
-						header ( "Location: index.php" );
+						header( "Location: index.php" );
 					} else {
-						// Die
+						// 
 						echo isValidEmail($tempEmail) ? "The username and password does not match." : "The username you entered is not recognised.";
 					}
 				} else {
 					echo "Enter your username and password below.";
 				}
+				// ---------------------------------------------------------------------------------------------------------------------------------
 				?>	
 			</div><br />
 			<input class="text" type="email" name="umail" placeholder="Email" maxlength="32" required="required" /><br /> 
@@ -49,6 +55,6 @@ include_once 'src/dynamicmenu.php';
 			<input class="button" type="submit" value="Log In" />
 		</form>
 	</div>		
-	<div id="footer">2016 &copy; Nicolaas Pretorius</div>
+	<?php printFooter(); ?>
 </body>
 </html>

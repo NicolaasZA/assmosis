@@ -1,11 +1,11 @@
 <?php 
-include_once 'src/dbcontroller.php';
 include_once 'src/actions/logincheck.php';
-include_once 'src/dynamicmenu.php';
+include_once 'src/dbcontroller.php';
+include_once 'src/iofunctions.php';
 
-// Set default category to general.
+// Set default category to general, and don't show resolved.
 if(!isset($_GET["category"])) {
-	header("Location: index.php?category=0");
+	header("Location: index.php?category=1&showResolved=0");
 }
 ?>
 <html>
@@ -29,7 +29,7 @@ if(!isset($_GET["category"])) {
 </div>
 <div id="header">
 	<img src="res/img/logo.png" alt="Logo Goes Here" />
-	<?php listDynamicMenuOptions($_GET["category"]); ?>
+	<?php printCategoryMenu($_GET["category"]); ?>
 </div>
 <div id="page">
 	<div id="entryAdd">
@@ -40,24 +40,24 @@ if(!isset($_GET["category"])) {
 			<input id="entryTitle" name="title" type="text" maxlength="30" required="required" placeholder="Title"/>
   			Type:
   			<select name="entrytype">
-				  <option value="1">Suggestion</option>
-				  <option value="0">Bug</option>
+  				<?php printTypesDropdown(); ?>
 			</select>
 			Category:
   			<span class="entryDiv" id="entryCategory">
   				<select name="category">
-					  <option value="0">General</option>
-					  <option value="1">ARMA</option>
-					  <option value="2">OssMosis</option>
+  					<?php printCategoriesDropdown(); ?>
 				</select> 
   			</span>
 			<div class="error">
 				<?php 
-					// Form submittion event
+					// -----------------------------------------------------------------------------------------------------------------------
+					// UPON ENTRY SUBMISSION
 					if(isset($_POST) && !empty($_POST)){
+						// Entry addition logic.
 						addEntry(htmlspecialchars($_POST["title"]), htmlspecialchars($_POST["description"]), $_POST["entrytype"], $_POST["category"], $_COOKIE["ass_userid"]);
 						header("Location: index.php?category=" . $_GET["category"]);
 					}
+					// -----------------------------------------------------------------------------------------------------------------------
 				?>
 			</div>							
 		</form>
@@ -67,6 +67,6 @@ if(!isset($_GET["category"])) {
 		<?php listEntriesByCategory($_GET["category"], isset($_GET["showResolved"])); ?>
 	</div>
 </div>
-<div id="footer">2016 &copy; Nicolaas Pretorius</div>
+<?php printFooter(); ?>
 </body>
 </html>

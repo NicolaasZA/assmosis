@@ -5,7 +5,7 @@
 */
 body {
 	background-image: url('../img/body.png');
-	background-color: #0f0100; /*0D0600*/
+	background-color: #0D0600; /*0f0100*/
 	color: #2A2C31;
 	font-family: PoetsenOne, "Segou UI", Arial;
 	font-size: 16px;
@@ -103,6 +103,21 @@ input.button {
 	position: fixed;
 	bottom: 2px;
 	right: 5px;
+}
+#footer a {
+	color: inherit;
+	font-style: italic;
+	text-decoration: none;
+}
+#footer a:hover {	
+	font-weight: 900;
+}
+
+#cookienote {	
+	position: fixed;
+	bottom: 2px;
+	width: 100%;
+	text-align: center;
 }
 
 /*

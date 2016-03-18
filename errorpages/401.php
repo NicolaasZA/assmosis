@@ -1,10 +1,10 @@
 <?php
-	$rootpath = "http://".$_SERVER['HTTP_HOST']."/assmosis/";
+	$rootpath = "http://".$_SERVER['HTTP_HOST']."/";
 ?>
 <html>
 	<head>
 		<title>Error</title>
-		<link rel="stylesheet" type="text/css" href="<?php echo $rootpath; ?>errorpages/error.css">		
+		<link rel="stylesheet" type="text/css" href="<?php echo $rootpath; ?>errorpages/error.css">			
 	</head>
 	<body>
 		<h1>Unauthorized</h1>		

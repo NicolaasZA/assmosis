@@ -1,5 +1,5 @@
 <?php
-	$rootpath = "http://".$_SERVER['HTTP_HOST']."/assmosis/";
+	$rootpath = "http://".$_SERVER['HTTP_HOST']."/";
 ?>
 <html>
 	<head>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2016 at 11:30 AM
+-- Generation Time: Mar 18, 2016 at 01:32 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -17,10 +17,33 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `db_assmosis`
+-- Database: `malarvsk_assmosis`
 --
-CREATE DATABASE IF NOT EXISTS `db_assmosis` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `db_assmosis`;
+CREATE DATABASE IF NOT EXISTS `malarvsk_assmosis` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `malarvsk_assmosis`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`uid`, `name`) VALUES
+(1, 'General'),
+(2, 'Namalsk'),
+(3, 'Australia'),
+(4, 'AssMosis');
 
 -- --------------------------------------------------------
 
@@ -28,6 +51,7 @@ USE `db_assmosis`;
 -- Table structure for table `entries`
 --
 
+DROP TABLE IF EXISTS `entries`;
 CREATE TABLE IF NOT EXISTS `entries` (
   `uid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
@@ -44,17 +68,7 @@ CREATE TABLE IF NOT EXISTS `entries` (
   KEY `posteruid_2` (`poster_uid`),
   KEY `type` (`type`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
-
---
--- Dumping data for table `entries`
---
-
-INSERT INTO `entries` (`uid`, `title`, `description`, `type`, `is_resolved`, `category`, `creation_date`, `poster_uid`) VALUES
-(11, 'Welcome!', 'Welcome to AssMosis!', 1, 0, 0, '2016-01-20 20:47:51', '76561198096317882'),
-(13, 'Some ARMA Bug here...', 'Some description here...', 0, 0, 1, '2016-01-20 21:52:25', '76561198152351109'),
-(14, 'Add the Tryk Pack.', 'The Tryk Clothing Pack is very nice. Add it..', 1, 0, 1, '2016-01-20 21:52:48', '76561198152351109'),
-(15, 'Add Entry View', 'Add entry view with comments section.', 1, 0, 2, '2016-01-20 21:54:02', '76561198096317882');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 -- --------------------------------------------------------
 
@@ -62,6 +76,7 @@ INSERT INTO `entries` (`uid`, `title`, `description`, `type`, `is_resolved`, `ca
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `uid` varchar(17) NOT NULL,
   `email` varchar(32) NOT NULL,
@@ -74,22 +89,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `users`
+-- Table structure for table `types`
 --
 
-INSERT INTO `users` (`uid`, `email`, `password`, `nickname`, `avatar_path`) VALUES
-('76561198083758069', 'antwaan@skranj.co.za', 'somepassword', 'Antwaan', 'res/img/avatars/76561198083758069.jpg'),
-('76561198096317882', 'malark@skranj.co.za', 'supersecretpassword', 'MalarkZA', 'res/img/avatars/76561198096317882.jpg'),
-('76561198152351109', 'toastyza@skranj.co.za', 'somepassword', 'ToastyZA', 'res/img/avatars/76561198152351109.jpg');
+CREATE TABLE IF NOT EXISTS `types` (
+  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
---
--- Add the user the project uses
---
-GRANT USAGE ON *.* TO 'assmosis'@'localhost';
-
-GRANT SELECT, INSERT, UPDATE ON `db\_assmosis`.* TO 'assmosis'@'localhost';

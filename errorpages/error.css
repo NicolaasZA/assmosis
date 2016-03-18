@@ -1,6 +1,6 @@
 @CHARSET "ISO-8859-1";
 body {
-	background-image: url('../res/img/body.png');
+	/*background-image: url('../res/img/body.png');*/
 	background-color: #0D0600;
 	color: #F04924;
 	font-family: BuriedKNine, "Segou UI", Arial;
