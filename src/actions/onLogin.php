@@ -65,7 +65,7 @@ function redirectToLoginPage($error_id){
 
 function redirectToIndexPage() {
   // Redirect.
-  header("Location: ../../index.php?category=0");
+  header("Location: ../../index.php?category=1");
   // Die.
   die();
 }

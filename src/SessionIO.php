@@ -83,10 +83,10 @@ class SessionIO {
       $db->getUserData($userUID);
     } catch (Exception $e) {
       return false;
-    } finally {
-      // Close database connection
-      $db->closeConnection();
     }
+    
+    // Close database connection
+    $db->closeConnection();
 
     // Check if the user's Remote Adress matches.
     if(strcmp($sessionData['remoteAdress'], $this->getParsedUserIP()) !== 0){
