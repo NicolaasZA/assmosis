@@ -128,6 +128,7 @@ function listEntries($db) {
 	$currentCategory = getCurrentCategory();
 	$entryData = $db->getEntries();
 	$showResolved = getShowResolved();
+	$visibleEntryCount = 0;
 	// Loop through entries.
 	foreach($entryData as $entry) {
 		// Do not show entries from categories other than the current.
@@ -147,9 +148,11 @@ function listEntries($db) {
 		echo '<a href="src/actions/onPostResolve.php?category='.$currentCategory.'&postUID=' . $entry['uid'] . '">[Mark as ' . ($entry['is_resolved'] == 1 ? "Unresolved" : "Resolved") . ']</a>';
 		echo '<span class="postType" id="entry'.$entryTypeName.'">~' . $entryTypeName . '</span>';
 		echo '</span>';
-
 		echo '</div>'; // Closing div.
+		// Increment counter
+		$visibleEntryCount += 1;
 	}
+	if($visibleEntryCount === 0) { echo 'Nothing to see here (yet).'; }
 }
 
 ?>

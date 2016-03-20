@@ -5,9 +5,9 @@
 	width: 1000px;
 }
 
-/* 
+/*
 =====================================
-========== Entry Form 
+========== Entry Form
 =====================================
 */
 #entryAdd {
@@ -34,7 +34,7 @@
 }
 #entryAdd .area {
 	min-width: 1000px;
-	max-width: 1000px;		
+	max-width: 1000px;
 	width: 1000px;
 	min-height: 50px;
 	max-height: 400px;
@@ -60,7 +60,7 @@
 	border-bottom: 1px outset #F04924;
 }
 
-#entryAdd select {	
+#entryAdd select {
 	background-image: url('../img/grey.png');
 	background-color: #252525;
 	color: #b8b8ab;
@@ -85,9 +85,9 @@
 	width: 300px;
 }
 
-/* 
+/*
 =====================================
-========== Entry Listing 
+========== Entry Listing
 =====================================
 */
 #entryList {
@@ -104,11 +104,13 @@ div.entrySuggestion, div.entryBug, div.entryAnnouncement {
 	text-align: left !important;
 	margin-bottom: 5px;
 	padding: 6px 10px 3px 10px;
+	border-radius: 5px;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-div.entrySuggestion { border-left: 5px solid #ffb805; }
-div.entryBug { border-left: 5px solid #F04924; }
-div.entryAnnouncement { border-left: 5px solid #93ff05; }
+div.entrySuggestion { border-left: 9px solid #ffb805; border-right: 3px solid #ffb805; }
+div.entryBug { border-left: 9px solid #F04924; border-right: 3px solid #F04924; }
+div.entryAnnouncement { border-left: 9px solid #93ff05; border-right: 3px solid #93ff05; }
 
 span #entrySuggestion { color: #ffb805 !important; }
 span #entryBug { color: #F04924 !important; }
@@ -122,6 +124,7 @@ span #entryAnnouncement { color: #93ff05 !important; }
 	float: right;
 	text-align: right;
 	font-size: 14px;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 #entryList .postType {
@@ -144,4 +147,3 @@ span #entryAnnouncement { color: #93ff05 !important; }
 	font-size: 15px;
 	font-weight: 100;
 }
-
