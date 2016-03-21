@@ -97,7 +97,7 @@
 	width: 1000px;
 }
 
-div.entrySuggestion, div.entryBug, div.entryAnnouncement {
+div.entryFeatureRequest, div.entryBug, div.entryAnnouncement {
 	background-image: url('../img/grey.png');
 	background-color: #252525;
 	color: #b8b8ab;
@@ -108,11 +108,11 @@ div.entrySuggestion, div.entryBug, div.entryAnnouncement {
 	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-div.entrySuggestion { border-left: 9px solid #ffb805; border-right: 3px solid #ffb805; }
+div.entryFeatureRequest { border-left: 9px solid #ffb805; border-right: 3px solid #ffb805; }
 div.entryBug { border-left: 9px solid #F04924; border-right: 3px solid #F04924; }
 div.entryAnnouncement { border-left: 9px solid #93ff05; border-right: 3px solid #93ff05; }
 
-span #entrySuggestion { color: #ffb805 !important; }
+span #entryFeatureRequest { color: #ffb805 !important; }
 span #entryBug { color: #F04924 !important; }
 span #entryAnnouncement { color: #93ff05 !important; }
 

@@ -43,6 +43,7 @@ if(isset($_POST) && !empty($_POST)) {
   redirectToIndexPage();
 }
 
+
 function redirectToIndexPage($category = 1) {
   header("Location: ../../index.php?category=$category");
   die();

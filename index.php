@@ -137,16 +137,17 @@ function listEntries($db) {
 		if($entry['is_resolved'] == 1 && $showResolved == 0) { continue; }
 		// Entry-specific data
 		$entryTypeName = $db->getTypeName($entry['type']);
+		$entryTypeClassname = 'entry'.str_replace(' ','',$entryTypeName);
 		$entryPosterName = $db->getUserData($entry['poster_uid'])['nickname'];
 		// Output
-		echo '<div class="entry' . $entryTypeName . '">';
+		echo '<div class="' . $entryTypeClassname . '">';
 		echo '<span class="postTitle">' . $entry['title'] . '</span>';
 		echo '<span class="postDetails">Posted at '.$entry['creation_date'].'<br />by '.$entryPosterName.'</span><br />';
 		echo '<span class="postDesc">' . $entry['description'] . '</span><br />';
 		// Links
 		echo '<span class="postLinks">';
 		echo '<a href="src/actions/onPostResolve.php?category='.$currentCategory.'&postUID=' . $entry['uid'] . '">[Mark as ' . ($entry['is_resolved'] == 1 ? "Unresolved" : "Resolved") . ']</a>';
-		echo '<span class="postType" id="entry'.$entryTypeName.'">~' . $entryTypeName . '</span>';
+		echo '<span class="postType" id="'.$entryTypeClassname.'">~' . $entryTypeName . '</span>';
 		echo '</span>';
 		echo '</div>'; // Closing div.
 		// Increment counter
@@ -155,4 +156,5 @@ function listEntries($db) {
 	if($visibleEntryCount === 0) { echo 'Nothing to see here (yet).'; }
 }
 
+$db->closeConnection();
 ?>
